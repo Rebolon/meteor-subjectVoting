@@ -1,0 +1,37 @@
+<head>
+  <title>lft: vote des sujets</title>
+</head>
+
+<body>
+  {{> error}}
+  {{> list}}
+  {{> newSubject}}
+</body>
+
+<template name="error">
+  {{getError}}
+</template>
+
+<template name="list">
+  <h1>Votez pour un sujet</h1> {{loginButtons}}
+  <ol id="listSubjects">
+  {{#each subjects}}
+	<li>{{> subject}}</li>
+  {{/each}}
+  </ol>
+  {{#unless subjects}}
+Aucun sujet en cours.
+  {{/unless}}
+</template>
+
+<template name="subject">
+  {{#if currentUser}}
+    {{{btnDelSubject}}}
+  {{/if}}
+  <button id="btnVoteUp" title="Ajoutez un point"><i class="icon-hand-up"></i></button> <button id="btnVoteDown" title="Enlevez un point"><i class="icon-hand-down"></i></button> {{point}} - {{desc}}
+</template>
+
+<template name="newSubject">
+  <div class="input-append">
+  <input class="span2" type"text" name="fldNewSubject" id="fldNewSubject" /><button class="btn" name="btnNewSubject" id="btnNewSubject">Ok</button>
+</template>
