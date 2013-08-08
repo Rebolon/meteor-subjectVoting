@@ -6,7 +6,8 @@
 autopublish
 insecure
 preserve-inputs
-bootstrap
 accounts-base
-accounts-ui
 accounts-password
+accounts-google
+bootstrap
+accounts-ui

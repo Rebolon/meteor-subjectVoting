@@ -3,6 +3,8 @@
 </head>
 
 <body>
+  <h1>Votez pour un sujet</h1> 
+  {{loginButtons}}
   {{> error}}
   {{> list}}
   {{> newSubject}}
@@ -13,7 +15,7 @@
 </template>
 
 <template name="list">
-  <h1>Votez pour un sujet</h1> {{loginButtons}}
+  <h2>Sujets en cours</h2>
   <ol id="listSubjects">
   {{#each subjects}}
 	<li>{{> subject}}</li>
@@ -28,10 +30,22 @@ Aucun sujet en cours.
   {{#if currentUser}}
     {{{btnDelSubject}}}
   {{/if}}
-  <button id="btnVoteUp" title="Ajoutez un point"><i class="icon-hand-up"></i></button> <button id="btnVoteDown" title="Enlevez un point"><i class="icon-hand-down"></i></button> {{point}} - {{desc}}
+  <button id="btnVoteUp" title="Ajoutez un point"><i class="icon-hand-up"></i></button> 
+  <button id="btnVoteDown" title="Enlevez un point"><i class="icon-hand-down"></i></button> 
+  <span id="subject-{{_id}}" data-trigger="hover" data-toggle="popover" data-content="{{desc}}" data-original-title="détails">{{point}} - {{subject}}</span>
 </template>
 
 <template name="newSubject">
-  <div class="input-append">
-  <input class="span2" type"text" name="fldNewSubject" id="fldNewSubject" /><button class="btn" name="btnNewSubject" id="btnNewSubject">Ok</button>
+  <h2>Ajouter un sujet</h2>
+  <div class="form-horizontal">
+  <div class="control-group">
+    <div class="controls"><input class="span2" type"text" name="fldNewSubject" id="fldNewSubject" placeholder="Sujet" /></div>
+  </div>
+  <div class="control-group">
+    <div class="controls"><textarea name="fldNewDescription" id="fldNewDescription" rows="3" placeholder="Description"></textarea></div>
+  </div>
+  <div class="control-group">
+    <div class="controls"><button class="btn" name="btnNewSubject" id="btnNewSubject">Ok</button></div>
+  </div>
+  </div>
 </template>
